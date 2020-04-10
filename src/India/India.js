@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 import { ArrowUp } from "react-bootstrap-icons";
 import axios from "axios";
-import { Line, Pie, Doughnut} from "react-chartjs-2";
+import { Line, Bar, Doughnut} from "react-chartjs-2";
 
 
 class India extends Component {
@@ -18,6 +18,7 @@ class India extends Component {
   }
 
   componentDidMount() {
+    document.title = 'Corona Tracker';
     const apiUrl = "https://api.covid19india.org/data.json";
 
     //fetch(apiUrl)
@@ -86,8 +87,14 @@ class India extends Component {
                 <p>Total Deceased</p>
               </div>
             </div>
-
-            <Chart DailyData={this.state.timeseries} />
+            <div className="row">
+                <div className="col-lg-6">
+                <Chart DailyData={this.state.timeseries} />
+                </div>
+                <div className="col-lg-6">
+                <DeathChart StateData={this.state.cases}/>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-lg-6">
                 <Statewise StateData={this.state.cases} />
@@ -145,18 +152,21 @@ class Chart extends Component {
     return (
       <Line
         data={state1}
-        options={{
+        options={
+          {
           title: {
             display: true,
             text: "Last 21 days trend of daily cases",
             fontSize: 15,
           },
+          responsive : true,
           legend: {
             display: false,
             position: "right",
           },
         }}
-        height={45}
+        height={200}
+        
       />
 
     );
@@ -216,6 +226,59 @@ class StateChart extends Component {
 
 //END
 
+//Dohgnut Chart
+
+class DeathChart extends Component {
+
+  render() {
+    //        const AllStateData = this.props.IndiaData.filter(d => d.statecode!='TT');
+    //const AllStateData = this.props.IndiaData;
+    const AllStateData = this.props.StateData.filter(d => d.statecode!='TT' && d.deaths>0);
+
+    const labels1 = [];
+    let data1 = [];
+
+    AllStateData.map((d) => {
+    labels1.push(d.state); data1.push(d.deaths);
+    });
+
+    const statedata = {
+      labels: labels1,
+      datasets: [
+        {
+          label: "Death",
+          backgroundColor: ["#e14f56","#3087BF","#FFCA28","#00A9BD","#EC407A","#FF7043","#9CCC65","#BF78CB","#8E8E8E", "#ad7da0","#1cf235","#30be51", "#bfb041", "#e14f56","#3087BF","#FFCA28","#00A9BD","#EC407A","#FF7043","#9CCC65","#BF78CB","#8E8E8E" ],
+          borderColor: "rgba(75,10,192,1)",
+          borderWidth: 0,
+          data: data1,
+        },
+      ],
+    };
+
+    return (
+      <Bar
+      data={statedata}
+      options={{
+        title:{
+          display:true,
+          text:'Total Death Statewise',
+          fontSize:15
+        },
+        legend:{
+          display:false,
+          position:'bottom'
+        }
+      }}
+      height={200}
+    />
+
+      //end Doghnut
+    );
+  }
+}
+
+//END
+
 
 class Statewise extends Component {
   render() {
@@ -265,8 +328,8 @@ class Statewise extends Component {
               <td>
                 {d.deaths}
                 {d.deltadeaths != 0 ? (
-                  <small className="grey">
-                    <ArrowUp color="grey" size={25} />
+                  <small className="red">
+                    <ArrowUp color="red" size={25} />
                     {d.deltadeaths}
                   </small>
                 ) : (

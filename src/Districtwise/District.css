@@ -20,3 +20,17 @@
     width: 250px;
     text-align: left;
 }
+
+.statelist {
+    text-align: left;
+    list-style: none;
+    padding: 0; 
+    display: flex;
+    flex-wrap: wrap;
+}
+.statelist li {
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #777;
+    width: 45%;
+}

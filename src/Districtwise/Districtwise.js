@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./District.css";
 import { ArrowUp } from "react-bootstrap-icons";
-
+import { Table } from "react-bootstrap";
 import axios from "axios";
 
 // import { Container } from './styles';
@@ -15,11 +15,12 @@ class Districtwise extends Component {
       isLoading: true,
       district: [],
       states: [],
-      allowed : ["Punjab"]
+      allowed : ["Andaman and Nicobar Islands"]
     };
   }
 
   componentDidMount() {
+    document.title = 'Districtwise || State / District wise Covid Data';
     const apiUrl = "https://api.covid19india.org/data.json";
     const dist_apiUrl = "https://api.covid19india.org/state_district_wise.json";
 
@@ -42,12 +43,9 @@ class Districtwise extends Component {
           isLoading: false,
         });
       });
-
-    console.log("step 1 mount");
-  }
+ }
 
   handleClick = (az) => {
-
    this.setState({
      allowed: az
    })
@@ -58,48 +56,84 @@ class Districtwise extends Component {
     let districts1 = this.state.district;
     //    let ss =Object.keys(districts1);
     let st = Object.keys(districts1)
-    
     let ss = Object.keys(districts1).filter(key => this.state.allowed.includes(key));
-    let yd = "Kerala";
-  
-    
+    const StateData = this.state.states.filter(d => d.state==this.state.allowed);
     return (
-      <div className="container-fluid">
+      <div className="container-fluid pt-5">
         <div className="row">
-          <div className="col-3 col-md-2">
-       
-          {st.map((d, i) => 
-          (<p key={i} onClick={()=>this.handleClick(d)}>{d}</p>)
+          <div className="col-lg-6">
+        <ul className="statelist">
+          {st.sort((a, b) => a.localeCompare(b)).map((d, i) => 
+          (<li key={i} onClick={()=>this.handleClick(d)}>{d}</li>)
           )}
+</ul>
 
-            {ss.map((d, i) => {
-              console.log(d);
-              console.log("-------");
-              //console.log(districts1[d].districtData)
-
-              Object.keys(districts1[yd].districtData).map((f) => {
-                console.log(f);
-
-                console.log(districts1[yd].districtData[f].confirmed);
-              })
-
-              console.log("-------");
-            })}
           </div>
-          <div className="col-9 col-md-10">
+          <div className="col-lg-6">
+            <h2>{this.state.allowed}</h2>
+          {StateData.map((d) => (<React.Fragment>
+            <div className="flaotingBlocks">
+              <div className="block blue">
+                <h3>
+                  {d.confirmed}
+                  <small className="red">
+                    <ArrowUp color="red" size={25} />
+                    {d.deltaconfirmed}
+                  </small>
+                </h3>
+                <p>Total Confirmed</p>
+              </div>
+              <div className="block red">
+                <h3>{d.active}</h3>
+                <p>Total Active</p>
+              </div>
+              <div className="block green">
+                <h3>
+                  {d.recovered}
+                  <small className="green">
+                    <ArrowUp color="green" size={25} />
+                    {d.deltarecovered}
+                  </small>
+                </h3>
+                <p>Total Recovered</p>
+              </div>
+              <div className="block grey">
+                <h3>
+                  {d.deaths}
+                  <small className="red">
+                    <ArrowUp color="red" size={25} />
+                    {d.deltadeaths}
+                  </small>
+                </h3>
+                <p>Total Deceased</p>
+              </div>
+            </div>
+          </React.Fragment>))}
+         
             {ss.map((d, i) => (
               <div key={i}>
-                <div className="statename">
-                  <h3>{d}</h3>
-                </div>
-                <div className="districBlock">
-                  {Object.keys(districts1[d].districtData).map((f, g) => (
-                    <div className="districts" key={g}>
-                      <h5>{f}</h5>
-                      Confirmed Cases :{districts1[d].districtData[f].confirmed}
-                    </div>
-                  ))}
-                </div>
+                <Table striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>District</th>
+            <th>Total Confirmed</th>
+          </tr>
+          </thead>
+          <tbody>
+          {Object.keys(districts1[d].districtData).map((f, g) => (
+           
+          <tr key={g}>
+            <td className="text-left px-3">{f}</td>
+            <td>{districts1[d].districtData[f].confirmed}</td>
+            </tr>
+           
+          ))}
+           </tbody>
+       </Table>
+
+
+
+
               </div>
             ))}
           </div>
