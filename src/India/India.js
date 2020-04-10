@@ -99,7 +99,7 @@ class India extends Component {
             </div>
           </React.Fragment>
         ) : (
-          <h3>Loading...</h3>
+          <h3>Loading....</h3>
         )}
       </div>
     );
