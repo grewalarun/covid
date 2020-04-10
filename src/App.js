@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+//import Person from './Person/Person';
+import India from './India/India';
+import Districtwise from './Districtwise/Districtwise';
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav'
 
-function App() {
+class App extends Component {
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<Router>
+
+<div className="App">
+  <div className="App-header">
+  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Navbar.Brand href="#home">Corona Tracker</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="mr-auto">
+      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/Districtwise">District wise</Nav.Link>
+      <Nav.Link href="/faq">FAQ</Nav.Link>
+    </Nav>
+
+  </Navbar.Collapse>
+</Navbar>
+      </div>
+<div className="container-fluid dark">
+<Route path="/" exact strict component={India}/>
+<Route path="/Districtwise" exact strict component={Districtwise}/>
+
+  </div>    
+  
     </div>
+</Router>
+
+
   );
 }
-
+}
 export default App;

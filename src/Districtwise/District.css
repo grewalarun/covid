@@ -1,0 +1,22 @@
+.statename {
+    text-align: left;
+    padding: 5px 20px;
+    background-color: #313030;
+    margin-top: 10px;
+}
+.statename h3 {
+    margin: 0;
+}
+
+.districBlock {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    border: 1px solid #303030;
+}
+
+.districts {
+    padding: 20px;
+    width: 250px;
+    text-align: left;
+}
