@@ -46,8 +46,6 @@ class Districtwise extends Component {
     console.log("step 1 mount");
   }
 
-
-
   handleClick = (az) => {
 
    this.setState({
