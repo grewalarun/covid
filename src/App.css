@@ -25,19 +25,42 @@ body {
 
 .block {
   padding: 15px;
+  width: 160px;
+  margin-bottom: 10px;
 }
 
 .blue {
   color: #007bff;
 }
+.block.blue {
+  background-color: #cbe3fd;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
 .red {
   color: #ff0000
 }
+.block.red {
+  background-color: #fdd9d9;
+  border-radius: 5px;
+  border: 1px solid;
+}
 .grey {
-  color: #cccccc
+  color: #666666
+}
+.block.grey {
+  background-color: #eee;
+  border-radius: 5px;
+  border: 1px solid;
 }
 .green {
   color: #28a745
+}
+.block.green {
+  background-color: #cafdd5;
+  border-radius: 5px;
+  border: 1px solid;
 }
 
 .table-striped.table-dark tbody tr.warning:nth-of-type(odd), .table-striped.table-dark tbody tr.warning:nth-of-type(even){

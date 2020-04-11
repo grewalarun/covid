@@ -112,7 +112,7 @@ class Districtwise extends Component {
          
             {ss.map((d, i) => (
               <div key={i}>
-                <Table striped bordered hover variant="dark">
+                <Table striped bordered hover responsive>
         <thead>
           <tr>
             <th>District</th>

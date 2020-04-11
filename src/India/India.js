@@ -100,7 +100,7 @@ class India extends Component {
                 <Statewise StateData={this.state.cases} />
                 </div>
                 <div className="col-lg-6">
-                <h4 className="p-5">Statewise Spread Chart</h4>
+                <h4 className="py-5">Statewise Spread Chart</h4>
                     <StateChart StateData={this.state.cases}/>
                 </div>
             </div>
@@ -216,7 +216,7 @@ class StateChart extends Component {
             position:'bottom'
           }
         }}
-        height={200}
+        height={350}
       />
   
         //end Doghnut
@@ -287,8 +287,8 @@ class Statewise extends Component {
     );
     return (
         <React.Fragment>
-    <h4 className="p-5">Statewise Data Updated at {this.props.StateData[0].lastupdatedtime}</h4>
-      <Table striped bordered hover variant="dark">
+    <h4 className="py-5">Statewise Data Updated at {this.props.StateData[0].lastupdatedtime}</h4>
+      <Table striped responsive bordered hover>
         <thead>
           <tr>
             <th>State</th>
