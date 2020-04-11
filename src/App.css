@@ -12,7 +12,9 @@
   justify-content: center;
   color: white;
 }
-
+body {
+  background-color: #000;
+}
 .dark {
   background-color: #000;
   color: #ffffff;

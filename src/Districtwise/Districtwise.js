@@ -59,7 +59,7 @@ class Districtwise extends Component {
     let ss = Object.keys(districts1).filter(key => this.state.allowed.includes(key));
     const StateData = this.state.states.filter(d => d.state==this.state.allowed);
     return (
-      <div className="container-fluid pt-5">
+      
         <div className="row">
           <div className="col-lg-6">
         <ul className="statelist">
@@ -138,7 +138,7 @@ class Districtwise extends Component {
             ))}
           </div>
         </div>
-      </div>
+      
     );
   }
 }
