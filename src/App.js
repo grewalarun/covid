@@ -16,7 +16,7 @@ class App extends Component {
   <div className="App-header">
 
   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <Navbar.Brand href="#home">Corona Tracker</Navbar.Brand>
+  <Navbar.Brand>Corona Tracker</Navbar.Brand>
   <Navbar id="responsive-navbar-nav">
     <Nav className="mr-auto">
       <Nav.Link  as={Link} to="/">Home</Nav.Link>
@@ -28,7 +28,7 @@ class App extends Component {
   </Navbar>
 </Navbar>
       </div>
-<div className="container-fluid pt-5">
+<div className="container-fluid pt-3">
 <Switch>
 <Route path="/" exact strict component={India}/>
 <Route path="/Districtwise" exact strict component={Districtwise}/>

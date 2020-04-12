@@ -52,7 +52,7 @@ class India extends Component {
     const totalIndia = this.state.cases.filter((d) => d.statecode === "TT");
     return (
       <div>
-        <h2>INDIA</h2>
+        <h2 className="heading2">INDIA</h2>
         {!isLoading ? (
           <React.Fragment>
             <div className="flaotingBlocks">
@@ -104,7 +104,7 @@ class India extends Component {
                 <Statewise StateData={this.state.cases} />
                 </div>
                 <div className="col-lg-6">
-                <h4 className="py-5">Statewise Spread Chart</h4>
+                <h4 className="py-3 heading4">Statewise Spread Chart</h4>
                   <StateChart StateData={this.state.cases}/>
                 </div>
             </div>

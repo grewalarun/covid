@@ -5,6 +5,8 @@ import { ArrowUp } from "react-bootstrap-icons";
 import { Table } from "react-bootstrap";
 import axios from "axios";
 import queryString from 'querystring';
+import {BrowserRouter as Router, Route,Switch, Link} from "react-router-dom";
+import { NavHashLink as NavLink } from 'react-router-hash-link';
 
 // import { Container } from './styles';
 
@@ -72,7 +74,8 @@ class Districtwise extends Component {
 
           </div>
           <div className="col-lg-6">
-            <h2>{this.state.allowed}</h2>
+          <Link smooth to={{pathname:'/'}}>Back</Link>
+            <h2 className="heading2">{this.state.allowed}</h2>
           {StateData.map((d) => (<React.Fragment>
             <div className="flaotingBlocks">
               <div className="block blue">

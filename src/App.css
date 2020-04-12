@@ -1,10 +1,4 @@
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   display: flex;
@@ -14,6 +8,9 @@
 }
 body {
   background-color: #000;
+}
+body *{
+  font-family: 'Baloo Paaji 2', cursive;
 }
 .dark {
   background-color: #000;
@@ -66,6 +63,8 @@ body {
   border: 1px solid;
 }
 
+
+
 .table-striped.table-dark tbody tr.warning:nth-of-type(odd), .table-striped.table-dark tbody tr.warning:nth-of-type(even){
   color: #721c24;
   background-color: #f8d7da;
@@ -97,4 +96,25 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+h2.heading2 {
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+h4.heading4 {
+  text-transform: uppercase;
+  font-size: 22px;
+  text-align: center;
+  border-bottom: 1px solid;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .table-bordered.table td, .table-bordered.table th {
+    border: 1px solid #dee2e6;
+    padding: 5px;
+    font-size: 12px;
+}
 }

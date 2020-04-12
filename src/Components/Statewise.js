@@ -11,8 +11,8 @@ class Statewise extends Component {
       );
       return (
           <React.Fragment>
-      <h4 className="py-5">Statewise Data Updated at {this.props.StateData[0].lastupdatedtime}</h4>
-        <Table striped responsive bordered hover>
+      <h4 className="py-3 heading4">Statewise Data Updated at {this.props.StateData[0].lastupdatedtime}</h4>
+        <Table striped responsive bordered hover className="statecases">
           <thead>
             <tr>
               <th>State</th>
