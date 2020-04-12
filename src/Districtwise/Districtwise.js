@@ -4,18 +4,20 @@ import "./District.css";
 import { ArrowUp } from "react-bootstrap-icons";
 import { Table } from "react-bootstrap";
 import axios from "axios";
+import queryString from 'querystring';
 
 // import { Container } from './styles';
 
 class Districtwise extends Component {
   constructor(props) {
     super(props);
+    let qry = Object.keys(queryString.parse(props.location.state));
     this.state = {
       error: null,
       isLoading: true,
       district: [],
       states: [],
-      allowed : ["Andaman and Nicobar Islands"]
+      allowed : (!props.location.state)? "Punjab" : qry
     };
   }
 
@@ -55,14 +57,14 @@ class Districtwise extends Component {
   render() {
     let districts1 = this.state.district;
     //    let ss =Object.keys(districts1);
-    let st = Object.keys(districts1)
+    let st = Object.keys(districts1);
     let ss = Object.keys(districts1).filter(key => this.state.allowed.includes(key));
     const StateData = this.state.states.filter(d => d.state==this.state.allowed);
     return (
       
         <div className="row">
-          <div className="col-lg-6">
-        <ul className="statelist">
+          <div className="col-lg-6 d-none d-lg-block">
+       <ul className="statelist">
           {st.sort((a, b) => a.localeCompare(b)).map((d, i) => 
           (<li key={i} onClick={()=>this.handleClick(d)}>{d}</li>)
           )}
@@ -124,7 +126,16 @@ class Districtwise extends Component {
            
           <tr key={g}>
             <td className="text-left px-3">{f}</td>
-            <td>{districts1[d].districtData[f].confirmed}</td>
+            <td>{districts1[d].districtData[f].confirmed}
+            {districts1[d].districtData[f].delta.confirmed != 0 ? (
+            <small className="red">
+                      <ArrowUp color="red" size={25} />
+                      {districts1[d].districtData[f].delta.confirmed}
+                    </small>
+                   ) : (
+                    ""
+                  )}
+                    </td>
             </tr>
            
           ))}

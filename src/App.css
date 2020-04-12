@@ -22,6 +22,9 @@ body {
   text-align: center;
 }
 
+.App-header .navbar {
+  padding: 0.5rem 5px;
+}
 
 .block {
   padding: 15px;
@@ -69,7 +72,8 @@ body {
   border-color: #f5c6cb;
 }
 
-.table-striped.table-dark tbody tr td{
+
+.table-striped.table-dark tbody tr th, .table-striped.table-dark tbody tr td{
   padding: 2px;
 }
 
