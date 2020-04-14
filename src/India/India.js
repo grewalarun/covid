@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Table } from "react-bootstrap";
 import { ArrowUp } from "react-bootstrap-icons";
 import axios from "axios";
-import { Line, Bar, Doughnut} from "react-chartjs-2";
 import Chart from "../Charts/Chart";
 import StateChart from "../Charts/StateChart";
 import DeathChart from "../Charts/DeathChart";
 import Statewise from "../Components/Statewise";
-
 
 class India extends Component {
   constructor(props) {
@@ -22,7 +19,7 @@ class India extends Component {
   }
 
   componentDidMount() {
-    document.title = 'Corona Tracker';
+    document.title = "Corona Tracker";
     const apiUrl = "https://api.covid19india.org/data.json";
 
     //fetch(apiUrl)
@@ -48,7 +45,7 @@ class India extends Component {
   }
 
   render() {
-    const { isLoading} = this.state;
+    const { isLoading } = this.state;
     const totalIndia = this.state.cases.filter((d) => d.statecode === "TT");
     return (
       <div>
@@ -92,21 +89,21 @@ class India extends Component {
               </div>
             </div>
             <div className="row">
-                <div className="col-lg-6">
+              <div className="col-lg-6">
                 <Chart DailyData={this.state.timeseries} />
-                </div>
-                <div className="col-lg-6">
-                <DeathChart StateData={this.state.cases}/>
-                </div>
+              </div>
+              <div className="col-lg-6">
+                <DeathChart StateData={this.state.cases} />
+              </div>
             </div>
             <div className="row">
-                <div className="col-lg-6">
+              <div className="col-lg-6">
                 <Statewise StateData={this.state.cases} />
-                </div>
-                <div className="col-lg-6">
+              </div>
+              <div className="col-lg-6">
                 <h4 className="py-3 heading4">Statewise Spread Chart</h4>
-                  <StateChart StateData={this.state.cases}/>
-                </div>
+                <StateChart StateData={this.state.cases} />
+              </div>
             </div>
           </React.Fragment>
         ) : (
@@ -116,9 +113,5 @@ class India extends Component {
     );
   }
 }
-
-
-
-
 
 export default India;
