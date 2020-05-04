@@ -19,6 +19,7 @@ class Districtwise extends Component {
       isLoading: true,
       district: [],
       states: [],
+      zones: [],
       allowed : (!props.location.state)? "Punjab" : qry
     };
   }
@@ -27,6 +28,7 @@ class Districtwise extends Component {
     document.title = 'Districtwise || State / District wise Covid Data';
     const apiUrl = "https://api.covid19india.org/data.json";
     const dist_apiUrl = "https://api.covid19india.org/state_district_wise.json";
+    const zones = "https://api.covid19india.org/zones.json";
 
     //fetch(apiUrl)
 
@@ -36,14 +38,18 @@ class Districtwise extends Component {
     function distApi() {
       return axios.get(dist_apiUrl);
     }
+    function zoneApi() {
+      return axios.get(zones);
+    }
     axios
-      .all([dataApi(), distApi()])
+      .all([dataApi(), distApi(), zoneApi()])
 
       .then((res) => {
         //this will be executed only when all requests are complete
         this.setState({
           states: res[0].data.statewise,
           district: res[1].data,
+          zones: res[2].data,
           isLoading: false,
         });
       });
@@ -62,6 +68,8 @@ class Districtwise extends Component {
     let st = Object.keys(districts1);
     let ss = Object.keys(districts1).filter(key => this.state.allowed.includes(key));
     const StateData = this.state.states.filter(d => d.state==this.state.allowed);
+    const zone = this.state.zones;
+    
     return (
       
         <div className="row">
@@ -128,7 +136,7 @@ class Districtwise extends Component {
           {Object.keys(districts1[d].districtData).map((f, g) => (
            
           <tr key={g}>
-            <td className="text-left px-3">{f}</td>
+            <td className={(f=="Unknown")?"++":zone.zones.filter(a => a.district==f)[0].zone + "districtzone"}>{f}</td>
             <td>{districts1[d].districtData[f].confirmed}
             {districts1[d].districtData[f].delta.confirmed != 0 ? (
             <small className="red">

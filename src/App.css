@@ -115,6 +115,11 @@ h4.heading4 {
   text-align: center;
   padding-top: 20vh;
 }
+.copyright {
+  background: #000;
+  color:#fff;
+  padding: 10px;
+}
 
 @media only screen and (max-width: 767px) {
   .table-bordered.table td,
