@@ -25,7 +25,7 @@ class Statewise extends Component {
           <tbody>
             {AllStateData.map((d) => (
               <tr className={d.deltaconfirmed != 0 ? ("warning"):("")}>
-                <td><Link to={{pathname:'/Districtwise',state:d.state}}>{d.state}</Link></td>
+                <td>{(d.state!="State Unassigned")?<Link to={{pathname:'/Districtwise',state:d.state}}>{d.state}</Link>:"States Unassigned "}</td>
                 <td>
                   {d.confirmed}
                   {d.deltaconfirmed != 0 ? (
