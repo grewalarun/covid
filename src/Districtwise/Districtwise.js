@@ -75,8 +75,9 @@ class Districtwise extends Component {
         <div className="row">
           <div className="col-lg-6 d-none d-lg-block">
        <ul className="statelist">
-          {st.sort((a, b) => a.localeCompare(b)).map((d, i) => 
-          (<li key={i} onClick={()=>this.handleClick(d)}>{d}</li>)
+          {st.sort((a, b) => a.localeCompare(b)).map((d, i) => (d!="State Unassigned"?
+          <li key={i} onClick={()=>this.handleClick(d)}>{d}</li>
+          :"")
           )}
 </ul>
 
@@ -138,7 +139,7 @@ class Districtwise extends Component {
           {Object.keys(districts1[d].districtData).map((f, g) => (
            
           <tr key={g}>
-            <td className={(f=="Unknown")||(f=="Other State")||(f=="Italians")||(f=="Evacuees")?"++":zone.zones.filter(a => a.district==f)[0].zone + "districtzone"}>{f}</td>
+            <td className={(f=="Unknown")||(f=="Other State")||(f=="Italians")||(f=="Evacuees")    ||(f=="BSF Camp")||(f=="Airport Quarantine")||(f=="Railway Quarantine")?"++":zone.zones.filter(a => a.district==f)[0].zone + "districtzone"}>{f}</td>
             <td>{districts1[d].districtData[f].confirmed}
             {districts1[d].districtData[f].delta.confirmed != 0 ? (
             <small className="red">
