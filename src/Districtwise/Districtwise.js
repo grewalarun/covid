@@ -130,13 +130,15 @@ class Districtwise extends Component {
           <tr>
             <th>District</th>
             <th>Total Confirmed</th>
+            <th>Total Active</th>
+            <th>Deceased</th>
           </tr>
           </thead>
           <tbody>
           {Object.keys(districts1[d].districtData).map((f, g) => (
            
           <tr key={g}>
-            <td className={(f=="Unknown")?"++":zone.zones.filter(a => a.district==f)[0].zone + "districtzone"}>{f}</td>
+            <td className={(f=="Unknown")||(f=="Other State")?"++":zone.zones.filter(a => a.district==f)[0].zone + "districtzone"}>{f}</td>
             <td>{districts1[d].districtData[f].confirmed}
             {districts1[d].districtData[f].delta.confirmed != 0 ? (
             <small className="red">
@@ -147,6 +149,8 @@ class Districtwise extends Component {
                     ""
                   )}
                     </td>
+                   <td>{districts1[d].districtData[f].active}</td>
+                   <td>{districts1[d].districtData[f].deceased}</td>
             </tr>
            
           ))}
