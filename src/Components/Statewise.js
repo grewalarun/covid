@@ -5,6 +5,12 @@ import { ArrowUp } from "react-bootstrap-icons";
 import {BrowserRouter as Router, Route,Switch, Link} from "react-router-dom";
 
 class Statewise extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      aa :"lalala"
+  }
+}
     render() {
       const AllStateData = this.props.StateData.filter(
         (d) => d.statecode !== "TT"

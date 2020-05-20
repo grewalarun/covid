@@ -5,6 +5,7 @@ import axios from "axios";
 import Chart from "../Charts/Chart";
 import StateChart from "../Charts/StateChart";
 import DeathChart from "../Charts/DeathChart";
+import IndiaStat from "../Charts/IndiaStat";
 import Statewise from "../Components/Statewise";
 
 class India extends Component {
@@ -44,9 +45,12 @@ class India extends Component {
       );
   }
 
+
   render() {
     const { isLoading } = this.state;
     const totalIndia = this.state.cases.filter((d) => d.statecode === "TT");
+ 
+
     return (
       <div>
         <h2 className="heading2">INDIA</h2>
@@ -98,10 +102,14 @@ class India extends Component {
             </div>
             <div className="row">
               <div className="col-lg-6">
-                <Statewise StateData={this.state.cases} />
+                <Statewise StateData={this.state.cases}/>
               </div>
               <div className="col-lg-6">
-                <h4 className="py-3 heading4">Statewise Spread Chart</h4>
+              <h4 className="py-3 heading4">India Active vs Recovered</h4>
+
+                <IndiaStat Act={totalIndia[0].active} Rcvd={totalIndia[0].recovered} Dths={totalIndia[0].deaths} />
+
+                <h4 className="mt-4 py-3 heading4">Statewise Spread Chart</h4>
                 <StateChart StateData={this.state.cases} />
               </div>
             </div>
