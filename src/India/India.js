@@ -34,6 +34,9 @@ class India extends Component {
             cases: res.data.statewise,
             timeseries: res.data.cases_time_series,
             isLoading: false,
+            active: res.data.statewise[0].active,
+            recovered: res.data.statewise[0].recovered,
+            deaths: res.data.statewise[0].deaths,
           });
           console.log("Success");
         },
@@ -43,6 +46,14 @@ class India extends Component {
           console.log("Error Occured" + error);
         }
       );
+  }
+
+  handler = (a,b,c) => {
+    this.setState({
+      active: a,
+      recovered: b,
+      deaths: c,
+    })
   }
 
 
@@ -102,12 +113,12 @@ class India extends Component {
             </div>
             <div className="row">
               <div className="col-lg-6">
-                <Statewise StateData={this.state.cases}/>
+                <Statewise StateData={this.state.cases} handler = {this.handler} />
               </div>
               <div className="col-lg-6">
               <h4 className="py-3 heading4">India Active vs Recovered</h4>
 
-                <IndiaStat Act={totalIndia[0].active} Rcvd={totalIndia[0].recovered} Dths={totalIndia[0].deaths} />
+                <IndiaStat Act={this.state.active} Rcvd={this.state.recovered} Dths={this.state.deaths} />
 
                 <h4 className="mt-4 py-3 heading4">Statewise Spread Chart</h4>
                 <StateChart StateData={this.state.cases} />
