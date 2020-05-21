@@ -31,7 +31,7 @@ class Statewise extends Component {
           <tbody>
             {AllStateData.map((d) => (
               <tr className={d.deltaconfirmed != 0 ? ("warning"):("")}>
-                <td onMouseOver = {() => this.props.handler(d.confirmed,d.recovered,d.deaths)}>{(d.state!="State Unassigned")?<Link to={{pathname:'/Districtwise',state:d.state}}>{d.state}</Link>:"States Unassigned "}</td>
+                <td onMouseOver = {() => this.props.handler(d.active,d.recovered,d.deaths)}>{(d.state!="State Unassigned")?<Link to={{pathname:'/Districtwise',state:d.state}}>{d.state}</Link>:"States Unassigned "}</td>
                 <td>
                   {d.confirmed}
                   {d.deltaconfirmed != 0 ? (
