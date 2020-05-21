@@ -133,6 +133,12 @@ h4.heading4 {
   max-width: 380px;
   margin: auto;
 }
+.table-bordered td, .table-bordered th {
+  border: 1px solid #dee2e6;
+  font-size: 13px;
+  padding: 0 10px;
+}
+
 
 @media only screen and (max-width: 767px) {
   .table-bordered.table td,
