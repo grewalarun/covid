@@ -118,12 +118,16 @@ class India extends Component {
                 <Statewise StateData={this.state.cases} handler = {this.handler} />
               </div>
               <div className="col-lg-6">
+                <div className="stickydiv">
         <h4 className="py-3 heading4">{this.state.statename} Active vs Recovered</h4>
-
+        <div className="chart-container">
                 <IndiaStat Act={this.state.active} Rcvd={this.state.recovered} Dths={this.state.deaths} />
-
+</div>
                 <h4 className="mt-4 py-3 heading4">Statewise Spread Chart</h4>
+                <div className="chart-container1">
                 <StateChart StateData={this.state.cases} />
+                </div>
+                </div>
               </div>
             </div>
           </React.Fragment>

@@ -120,6 +120,19 @@ h4.heading4 {
   color:#fff;
   padding: 10px;
 }
+.stickydiv {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+.stickydiv .chart-container {
+  max-width: 280px;
+  margin: auto;
+}
+.stickydiv .chart-container1 {
+  max-width: 380px;
+  margin: auto;
+}
 
 @media only screen and (max-width: 767px) {
   .table-bordered.table td,
