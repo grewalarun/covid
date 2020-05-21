@@ -37,6 +37,7 @@ class India extends Component {
             active: res.data.statewise[0].active,
             recovered: res.data.statewise[0].recovered,
             deaths: res.data.statewise[0].deaths,
+            statename: res.data.statewise[0].state
           });
           console.log("Success");
         },
@@ -48,11 +49,12 @@ class India extends Component {
       );
   }
 
-  handler = (a,b,c) => {
+  handler = (a,b,c,d) => {
     this.setState({
       active: a,
       recovered: b,
       deaths: c,
+      statename: d
     })
   }
 
@@ -116,7 +118,7 @@ class India extends Component {
                 <Statewise StateData={this.state.cases} handler = {this.handler} />
               </div>
               <div className="col-lg-6">
-              <h4 className="py-3 heading4">India Active vs Recovered</h4>
+        <h4 className="py-3 heading4">{this.state.statename} Active vs Recovered</h4>
 
                 <IndiaStat Act={this.state.active} Rcvd={this.state.recovered} Dths={this.state.deaths} />
 
