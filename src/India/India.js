@@ -62,7 +62,8 @@ class India extends Component {
   render() {
     const { isLoading } = this.state;
     const totalIndia = this.state.cases.filter((d) => d.statecode === "TT");
- 
+    const perRecovered = parseInt(this.state.recovered)*100/(parseInt(this.state.active)+parseInt(this.state.recovered)+parseInt(this.state.deaths)) 
+    const perDeaths = parseInt(this.state.deaths)*100/(parseInt(this.state.active)+parseInt(this.state.recovered)+parseInt(this.state.deaths)) 
 
     return (
       <div>
@@ -119,7 +120,8 @@ class India extends Component {
               </div>
               <div className="col-lg-6">
                 <div className="stickydiv">
-        <h4 className="py-3 heading4">{this.state.statename} Active vs Recovered</h4>
+
+        <h4 className="py-3 heading4">{this.state.statename}  <span className="text-success">{parseFloat(perRecovered).toFixed(2)}% </span> Recovered <span className="text-danger">{parseFloat(perDeaths).toFixed(2)}% </span>Deaths</h4>
         <div className="chart-container">
                 <IndiaStat Act={this.state.active} Rcvd={this.state.recovered} Dths={this.state.deaths} />
 </div>
