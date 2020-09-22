@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Line, Bar, Doughnut } from "react-chartjs-2";
+import {Doughnut } from "react-chartjs-2";
 
 class ProvPieChart extends Component {
   render() {
@@ -10,10 +10,10 @@ class ProvPieChart extends Component {
     const labels1 = [];
     let data1 = [];
 
-    AllStateData.map((d) => {
+    AllStateData.map= (d) => {
       labels1.push(d.province);
       data1.push(d.confirmed);
-    });
+    };
 
     const statedata = {
       labels: labels1,

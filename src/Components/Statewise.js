@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 import { ArrowUp } from "react-bootstrap-icons";
-import {BrowserRouter as Router, Route,Switch, Link} from "react-router-dom";
+import {BrowserRouter as  Link} from "react-router-dom";
 
 class Statewise extends Component {
   constructor(props) {
@@ -30,11 +30,11 @@ class Statewise extends Component {
           </thead>
           <tbody>
             {AllStateData.map((d) => (
-              <tr className={d.deltaconfirmed != 0 ? ("warning"):("")}>
-                <td onMouseOver = {() => this.props.handler(d.active,d.recovered,d.deaths, d.state)}>{(d.state!="State Unassigned")?<Link to={{pathname:'/Districtwise',state:d.state}}>{d.state}</Link>:"States Unassigned "}</td>
+              <tr className={d.deltaconfirmed !== 0 ? ("warning"):("")}>
+                <td onMouseOver = {() => this.props.handler(d.active,d.recovered,d.deaths, d.state)}>{(d.state!=="State Unassigned")?<Link to={{pathname:'/Districtwise',state:d.state}}>{d.state}</Link>:"States Unassigned "}</td>
                 <td>
                   {d.confirmed}
-                  {d.deltaconfirmed != 0 ? (
+                  {d.deltaconfirmed !== 0 ? (
                     <small className="red">
                       <ArrowUp color="red" size={25} />
                       {d.deltaconfirmed}
@@ -46,7 +46,7 @@ class Statewise extends Component {
                 <td>{d.active}</td>
                 <td>
                   {d.recovered}
-                  {d.deltarecovered != 0 ? (
+                  {d.deltarecovered !== 0 ? (
                     <small className="green">
                       <ArrowUp color="green" size={25} />
                       {d.deltarecovered}
@@ -57,7 +57,7 @@ class Statewise extends Component {
                 </td>
                 <td>
                   {d.deaths}
-                  {d.deltadeaths != 0 ? (
+                  {d.deltadeaths !== 0 ? (
                     <small className="red">
                       <ArrowUp color="red" size={25} />
                       {d.deltadeaths}

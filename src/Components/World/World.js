@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 import { ArrowUp } from "react-bootstrap-icons";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 /*
 
@@ -46,7 +45,7 @@ class world extends Component {
   }
 
   render() {
-    const Countries = this.state.Countries.filter((c) => c.country_name != "");
+    const Countries = this.state.Countries.filter((c) => c.country_name !== "");
     const IsLoading = this.state.IsLoading;
     return !IsLoading ? (
       <React.Fragment>
@@ -71,11 +70,11 @@ class world extends Component {
           </thead>
           <tbody>
             {Countries.map((d) => (
-              <tr className={d.new_deaths != 0 ? "warning" : ""}>
+              <tr className={d.new_deaths !== 0 ? "warning" : ""}>
                 <td>{d.country_name}</td>
                 <td>
                   {d.cases}
-                  {d.new_cases != 0 ? (
+                  {d.new_cases !== 0 ? (
                     <small className="red">
                       <ArrowUp color="red" size={25} />
                       {d.new_cases}
@@ -88,7 +87,7 @@ class world extends Component {
                 <td>{d.total_recovered}</td>
                 <td>
                   {d.deaths}
-                  {d.new_deaths != 0 ? (
+                  {d.new_deaths !== 0 ? (
                     <small className="red">
                       <ArrowUp color="red" size={25} />
                       {d.new_deaths}

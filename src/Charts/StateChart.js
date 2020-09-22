@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import { Line, Bar, Doughnut} from "react-chartjs-2";
+import {Doughnut} from "react-chartjs-2";
 
 class StateChart extends Component {
 
     render() {
       //        const AllStateData = this.props.IndiaData.filter(d => d.statecode!='TT');
       //const AllStateData = this.props.IndiaData;
-      const AllStateData = this.props.StateData.filter(d => d.statecode!='TT').slice(0,22);
+      const AllStateData = this.props.StateData.filter(d => d.statecode!=='TT').slice(0,22);
   
       const labels1 = [];
       let data1 = [];
   
-      AllStateData.map((d) => {
+      AllStateData.map= (d) => {
       labels1.push(d.state); data1.push(d.confirmed);
-      });
+      };
   
       const statedata = {
         labels: labels1,

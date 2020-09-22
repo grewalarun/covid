@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Line, Bar, Doughnut} from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
 
 class Chart extends Component {
     constructor(props) {
@@ -20,9 +20,9 @@ class Chart extends Component {
       const labels1 = [];
       let data1 = [];
   
-      DailyData.map((d) => {
+      DailyData.map=(d) => {
       labels1.push(d.date); data1.push(d.dailyconfirmed);
-      });
+      };
   
       const state1 = {
         labels: labels1,

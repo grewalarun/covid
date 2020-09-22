@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Line, Pie, Doughnut} from "react-chartjs-2";
+import { Doughnut} from "react-chartjs-2";
 
 class IndiaStat extends Component {
 

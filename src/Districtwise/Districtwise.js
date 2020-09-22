@@ -5,8 +5,7 @@ import { ArrowUp } from "react-bootstrap-icons";
 import { Table } from "react-bootstrap";
 import axios from "axios";
 import queryString from 'querystring';
-import {BrowserRouter as Router, Route,Switch, Link} from "react-router-dom";
-import { NavHashLink as NavLink } from 'react-router-hash-link';
+import {BrowserRouter as Link} from "react-router-dom";
 
 // import { Container } from './styles';
 
@@ -67,7 +66,7 @@ class Districtwise extends Component {
     //    let ss =Object.keys(districts1);
     let st = Object.keys(districts1);
     let ss = Object.keys(districts1).filter(key => this.state.allowed.includes(key));
-    const StateData = this.state.states.filter(d => d.state==this.state.allowed);
+    const StateData = this.state.states.filter(d => d.state===this.state.allowed);
     const zone = this.state.zones;
     
     return (
@@ -75,7 +74,7 @@ class Districtwise extends Component {
         <div className="row">
           <div className="col-lg-6 d-none d-lg-block">
        <ul className="statelist">
-          {st.sort((a, b) => a.localeCompare(b)).map((d, i) => (d!="State Unassigned"?
+          {st.sort((a, b) => a.localeCompare(b)).map((d, i) => (d!=="State Unassigned"?
           <li key={i} onClick={()=>this.handleClick(d)}>{d}</li>
           :"")
           )}
@@ -139,9 +138,9 @@ class Districtwise extends Component {
           {Object.keys(districts1[d].districtData).map((f, g) => (
            
           <tr key={g}>
-            <td className={(f=="Unknown")||(f=="Other State")||(f=="Italians")||(f=="Evacuees") ||(f=="Other Region")   ||(f=="BSF Camp")||(f=="Airport Quarantine")||(f=="Railway Quarantine")?"++":zone.zones.filter(a => a.district==f)[0].zone + "districtzone"}>{f}</td>
+            <td className={(f==="Unknown")||(f==="Other State")||(f==="Italians")||(f==="Evacuees") ||(f==="Other Region")   ||(f==="BSF Camp")||(f==="Airport Quarantine")||(f==="Railway Quarantine")?"++":zone.zones.filter(a => a.district===f)[0].zone + "districtzone"}>{f}</td>
             <td>{districts1[d].districtData[f].confirmed}
-            {districts1[d].districtData[f].delta.confirmed != 0 ? (
+            {districts1[d].districtData[f].delta.confirmed !== 0 ? (
             <small className="red">
                       <ArrowUp color="red" size={25} />
                       {districts1[d].districtData[f].delta.confirmed}
@@ -170,11 +169,11 @@ class Districtwise extends Component {
   }
 }
 
-class Zila extends Component {
-  render() {
-    return;
-    //dist.map((d,i) => (<p>{i}</p>))
-  }
-}
+// class Zila extends Component {
+//   render() {
+//     return;
+//     //dist.map((d,i) => (<p>{i}</p>))
+//   }
+// }
 
 export default Districtwise;

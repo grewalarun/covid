@@ -42,7 +42,7 @@ class Canada extends Component {
   }
 
   render() {
-    const Canada = this.state.Canada.filter((c) => c.confirmed != 0);
+    const Canada = this.state.Canada.filter((c) => c.confirmed !== 0);
     const IsLoading = this.state.IsLoading;
     return !IsLoading ? (
       <React.Fragment>
