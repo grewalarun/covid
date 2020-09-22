@@ -20,9 +20,9 @@ class Chart extends Component {
       const labels1 = [];
       let data1 = [];
   
-      DailyData.map=(d) => {
-      labels1.push(d.date); data1.push(d.dailyconfirmed);
-      };
+      DailyData.map(d => {
+      return (labels1.push(d.date), data1.push(d.dailyconfirmed))
+      });
   
       const state1 = {
         labels: labels1,

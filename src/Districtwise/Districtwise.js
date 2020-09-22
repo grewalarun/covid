@@ -5,7 +5,7 @@ import { ArrowUp } from "react-bootstrap-icons";
 import { Table } from "react-bootstrap";
 import axios from "axios";
 import queryString from 'querystring';
-import {BrowserRouter as Link} from "react-router-dom";
+import {BrowserRouter as Switch,Link} from "react-router-dom";
 
 // import { Container } from './styles';
 

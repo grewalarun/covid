@@ -11,9 +11,11 @@ class DeathChart extends Component {
     const labels1 = [];
     let data1 = [];
 
-    AllStateData.map=(d) => {
-    labels1.push(d.state); data1.push(d.deaths);
-    };
+    AllStateData.map(d =>{
+      return( labels1.push(d.state),
+      data1.push(d.deaths)
+      )
+  });
 
     const statedata = {
       labels: labels1,

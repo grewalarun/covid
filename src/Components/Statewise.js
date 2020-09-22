@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 import { ArrowUp } from "react-bootstrap-icons";
-import {BrowserRouter as  Link} from "react-router-dom";
+import {BrowserRouter as Switch, Link} from "react-router-dom";
 
 class Statewise extends Component {
   constructor(props) {

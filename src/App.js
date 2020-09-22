@@ -24,7 +24,6 @@ class App extends Component {
       <Nav.Link activeClassName="active" as={Link} to="/">India</Nav.Link>
       <Nav.Link activeClassName="active" as={Link} to="/Canada">Canada</Nav.Link>
       <Nav.Link activeClassName="active" as={Link} to="/World">World</Nav.Link>
-     
     </Nav>
 
   </Navbar>
@@ -36,6 +35,7 @@ class App extends Component {
 <Route path="/Districtwise" exact strict component={Districtwise}/>
 <Route path="/World" exact strict component={World}/>
 <Route path="/Canada" exact strict component={Canada}/>
+<Route path="/Districtwise" exact strict component={Districtwise}/>
 </Switch>
   </div>    
   
