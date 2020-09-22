@@ -138,7 +138,7 @@ class Districtwise extends Component {
           {Object.keys(districts1[d].districtData).map((f, g) => (
            
           <tr key={g}>
-            <td className={(f==="Unknown")||(f==="Other State")||(f==="Italians")||(f==="Evacuees")|| (f==="Foreign Evacuees") ||(f==="Other Region")   ||(f==="BSF Camp")||(f==="Airport Quarantine")||(f==="Other State")||(f==="Railway Quarantine")?"++":zone.zones.filter(a => a.district===f)?zone.zones.filter(a => a.district===f)[0].zone + "districtzone":""}>{f}</td>
+            <td className={zone.zones.filter(a => a.district===f)[0]?zone.zones.filter(a => a.district===f)[0].zone + "districtzone":""}>{f}</td>
             <td>{districts1[d].districtData[f].confirmed}
             {districts1[d].districtData[f].delta.confirmed !== 0 ? (
             <small className="red">
