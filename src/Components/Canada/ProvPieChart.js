@@ -10,10 +10,9 @@ class ProvPieChart extends Component {
     const labels1 = [];
     let data1 = [];
 
-    AllStateData.map= (d) => {
-      labels1.push(d.province);
-      data1.push(d.confirmed);
-    };
+    AllStateData.map(d => {
+      return (labels1.push(d.province),data1.push(d.confirmed))
+    });
 
     const statedata = {
       labels: labels1,
