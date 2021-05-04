@@ -150,7 +150,16 @@ class Districtwise extends Component {
                   )}
                     </td>
                    <td>{districts1[d].districtData[f].active}</td>
-                   <td>{districts1[d].districtData[f].deceased}</td>
+                   <td>{districts1[d].districtData[f].deceased}
+                   {districts1[d].districtData[f].delta.deceased !== 0 ? (
+            <small className="red">
+                      <ArrowUp color="red" size={25} />
+                      {districts1[d].districtData[f].delta.deceased}
+                    </small>
+                   ) : (
+                    ""
+                  )}
+                   </td>
             </tr>
            
           ))}
